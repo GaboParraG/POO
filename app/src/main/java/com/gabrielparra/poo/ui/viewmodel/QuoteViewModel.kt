@@ -18,7 +18,8 @@ class QuoteViewModel : ViewModel() {
     var getRandomQuoteUseCase = GetRandomQuoteUseCase()
 
     fun onCreate(){
-        viewModelScope.launch {
+        // Llamada al caso de uso
+        viewModelScope.launch {  //-> viewModelScope nos permite crear una corrutina propia para viewmodel
             isLoading.postValue(true)
             val result:List<QuoteModel>? = getQuotesUseCase()
             if (!result.isNullOrEmpty()){
@@ -31,7 +32,7 @@ class QuoteViewModel : ViewModel() {
 
     fun randomQuote() {
         isLoading.postValue(true)
-        val quote = getRandomQuoteUseCase()
+        val quote = getRandomQuoteUseCase() // llamado al caso de uso para cliquear las citas
         if(quote!=null){
             quoteModel.postValue(quote)
         }

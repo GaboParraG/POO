@@ -7,7 +7,7 @@ class GetQuotesUseCase {
 
     private val repository = QuoteRepository()
 
-    suspend operator fun invoke():List<QuoteModel>?{
-        return repository.getAllQuotes()
-    }
+    //invoke devuelve funcion especifica cuando se instancie la clase
+    suspend operator fun invoke():List<QuoteModel>? = repository.getAllQuotes()
+
 }
